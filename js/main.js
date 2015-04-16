@@ -149,9 +149,13 @@ function createCar() {
              {
              var alien = aliens.create((game.rnd.integerInRange(6, 12)*64), -64, 'invader');  
              }
-             else
+             else if (game.rnd.integerInRange(0, 2) > 1)
              {
             var alien = aliens.create((game.rnd.integerInRange(6, 12)*64), -64, 'invader2');
+             }
+             else
+             {
+            var alien = aliens.create((game.rnd.integerInRange(6, 12)*64), -64, 'invader3');     
              }
             alien.anchor.setTo(0.5, 0.5);
             alien.animations.add('fly', [ 0, 1, 2, 3 ], 20, true);
@@ -163,9 +167,13 @@ function createCar() {
              {
              var alien = aliens.create((game.rnd.integerInRange(6, 12)*64), -64, 'invader');  
              }
-             else
+             else if (game.rnd.integerInRange(0, 2) > 1)
              {
             var alien = aliens.create((game.rnd.integerInRange(6, 12)*64), -64, 'invader2');
+             }
+             else
+             {
+            var alien = aliens.create((game.rnd.integerInRange(6, 12)*64), -64, 'invader3');     
              }
             alien.anchor.setTo(0.5, 0.5);
             alien.animations.add('fly', [ 0, 1, 2, 3 ], 20, true);
@@ -177,10 +185,14 @@ function createCar() {
              {
              var alien = aliens.create((game.rnd.integerInRange(0, 5)*64), -64, 'cardown'); 
              }
-             else
+             else if (game.rnd.integerInRange(0, 2) > 1)
              {
             var alien = aliens.create((game.rnd.integerInRange(0, 5)*64), -64, 'cardown2');
              }
+            else
+            {
+            var alien = aliens.create((game.rnd.integerInRange(0, 5)*64), -64, 'cardown3');
+            }
             alien.anchor.setTo(0.5, 0.5);
             alien.animations.add('fly', [ 0, 1, 2, 3 ], 20, true);
             alien.play('fly');
