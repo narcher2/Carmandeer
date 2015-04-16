@@ -165,7 +165,7 @@ function createCar() {
             
             if (game.rnd.integerInRange(0, 2) > 1)
              {
-             var alien = aliens.create((game.rnd.integerInRange(6, 12)*64), -64, 'invader');  
+            var alien = aliens.create((game.rnd.integerInRange(6, 12)*64), -64, 'invader');  
              }
              else if (game.rnd.integerInRange(0, 2) > 1)
              {
