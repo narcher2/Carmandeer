@@ -18,8 +18,8 @@ function preload() {
     game.load.spritesheet('debroo', 'assets/games/invaders/debris_strip5.png', 16, 16);
     game.load.image('starfield', 'assets/games/carmandeer/road.png');
     game.load.image('background', 'assets/games/starstruck/background2.png');
-    game.load.audio('traffic', 'assets/games/carmandeer/traffic.mp3');
-    //game.load.audio('traffic', 'assets/games/carmandeer/cityescape.mp3');
+    //game.load.audio('traffic', 'assets/games/carmandeer/traffic.mp3');
+    game.load.audio('traffic', 'assets/games/carmandeer/cityescape.mp3');
     game.load.audio('crash', 'assets/games/carmandeer/crash2.wav');
     
 
@@ -145,55 +145,43 @@ function createCar() {
             score += 10;
             scoreText.text = scoreString + score;
 
-            /*if (game.rnd.integerInRange(0, 2) > 1)
+            if (game.rnd.integerInRange(0, 2) > 1)
              {
              var alien = aliens.create((game.rnd.integerInRange(6, 12)*64), -64, 'invader');  
              }
-             else if (game.rnd.integerInRange(0, 2) > 1)
-             {
-            var alien = aliens.create((game.rnd.integerInRange(6, 12)*64), -64, 'invader2');
-             }
              else
-             {*/
+             {
             var alien = aliens.create((game.rnd.integerInRange(6, 12)*64), -64, 'invader');     
-             //}
+             }
             alien.anchor.setTo(0.5, 0.5);
             alien.animations.add('fly', [ 0, 1, 2, 3 ], 20, true);
             alien.play('fly');
             alien.body.moves = true;
             alien.body.velocity.y = game.rnd.integerInRange(100, 150);
             
-            /*if (game.rnd.integerInRange(0, 2) > 1)
+            if (game.rnd.integerInRange(0, 2) > 1)
              {
             var alien = aliens.create((game.rnd.integerInRange(6, 12)*64), -64, 'invader');  
              }
-             else if (game.rnd.integerInRange(0, 2) > 1)
-             {
-            var alien = aliens.create((game.rnd.integerInRange(6, 12)*64), -64, 'invader2');
-             }
              else
-             {*/
+             {
             var alien = aliens.create((game.rnd.integerInRange(6, 12)*64), -64, 'invader');     
-             //}
+             }
             alien.anchor.setTo(0.5, 0.5);
             alien.animations.add('fly', [ 0, 1, 2, 3 ], 20, true);
             alien.play('fly');
             alien.body.moves = true;
             alien.body.velocity.y = game.rnd.integerInRange(100, 150);
             
-            /*
+            
             if (game.rnd.integerInRange(0, 2) > 1)
              {
              var alien = aliens.create((game.rnd.integerInRange(0, 5)*64), -64, 'cardown'); 
              }
-             else if (game.rnd.integerInRange(0, 2) > 1)
-             {
-            var alien = aliens.create((game.rnd.integerInRange(0, 5)*64), -64, 'cardown2');
-             }
             else
-            {*/
+             {
             var alien = aliens.create((game.rnd.integerInRange(0, 5)*64), -64, 'cardown');
-            //}
+             }
             alien.anchor.setTo(0.5, 0.5);
             alien.animations.add('fly', [ 0, 1, 2, 3 ], 20, true);
             alien.play('fly');
