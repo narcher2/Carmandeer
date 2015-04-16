@@ -3,15 +3,23 @@ var game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-example', { preload: p
 function preload() {
 
     game.load.image('bullet', 'assets/games/invaders/bullet.png');
+    game.load.image('debri', 'assets/games/invaders/debrissingle.png');
     game.load.image('enemyBullet', 'assets/games/invaders/enemy-bullet.png');
     //game.load.spritesheet('invader', 'assets/games/invaders/car2.png', 32, 64);
-    game.load.image('invader', 'assets/games/carmandeer/car2.png');
-    game.load.image('cardown', 'assets/games/carmandeer/car3.png');
-    game.load.image('ship', 'assets/games/carmandeer/car1.png');
+    game.load.image('invader', 'assets/games/carmandeer/redcartrimup.png');
+    game.load.image('cardown', 'assets/games/carmandeer/redcartrimdown.png');
+    game.load.image('invader2', 'assets/games/carmandeer/bluecaruptrim.png');
+    game.load.image('cardown2', 'assets/games/carmandeer/bluecardowntrim.png');
+    game.load.image('invader3', 'assets/games/carmandeer/purplecarup.png');
+    game.load.image('cardown3', 'assets/games/carmandeer/purplecardown.png');
+    game.load.spritesheet('rainbowcar', 'assets/games/carmandeer/rainbowcar.png', 24, 48);
+    game.load.image('ship', 'assets/games/carmandeer/yellowcartrim.png');
     game.load.spritesheet('kaboom', 'assets/games/invaders/explode.png', 128, 128);
+    game.load.spritesheet('debroo', 'assets/games/invaders/debris_strip5.png', 16, 16);
     game.load.image('starfield', 'assets/games/carmandeer/road.png');
     game.load.image('background', 'assets/games/starstruck/background2.png');
     game.load.audio('traffic', 'assets/games/carmandeer/traffic.mp3');
+    //game.load.audio('traffic', 'assets/games/carmandeer/cityescape.mp3');
     game.load.audio('crash', 'assets/games/carmandeer/crash2.wav');
     
 
@@ -24,6 +32,7 @@ var bulletTime = 0;
 var cursors;
 var fireButton;
 var explosions;
+var debris;
 var starfield;
 var score = 0;
 var scoreString = '';
@@ -69,6 +78,20 @@ function create() {
     enemyBullets.setAll('anchor.y', 1);
     enemyBullets.setAll('outOfBoundsKill', true);
     enemyBullets.setAll('checkWorldBounds', true);
+    
+    
+    debris = game.add.group();
+    debris.enableBody = true;
+    debris.physicsBodyType = Phaser.Physics.ARCADE;
+    
+    debris.createMultiple(50, 'debri');
+    debris.setAll('anchor.x', 0.5);
+    debris.setAll('anchor.y', 0.5);
+    debris.setAll('checkWorldBounds', true);
+    debris.setAll('outOfBoundsKill', true);
+    //debris.animations.add('debroo');
+    debris.animations.add('spin', [ 0, 1, 2, 3, 4 ], 20, true); 
+    
 
     //  The hero!
     player = game.add.sprite(400, 500, 'ship');
@@ -121,22 +144,43 @@ function create() {
 function createCar() {
             score += 10;
             scoreText.text = scoreString + score;
-    
-            var alien = aliens.create((game.rnd.integerInRange(6, 12)*64), -64, 'invader');
+
+            if (game.rnd.integerInRange(0, 2) > 1)
+             {
+             var alien = aliens.create((game.rnd.integerInRange(6, 12)*64), -64, 'invader');  
+             }
+             else
+             {
+            var alien = aliens.create((game.rnd.integerInRange(6, 12)*64), -64, 'invader2');
+             }
             alien.anchor.setTo(0.5, 0.5);
             alien.animations.add('fly', [ 0, 1, 2, 3 ], 20, true);
             alien.play('fly');
             alien.body.moves = true;
             alien.body.velocity.y = game.rnd.integerInRange(100, 150);
             
-            var alien = aliens.create((game.rnd.integerInRange(6, 12)*64), -64, 'invader');
+            if (game.rnd.integerInRange(0, 2) > 1)
+             {
+             var alien = aliens.create((game.rnd.integerInRange(6, 12)*64), -64, 'invader');  
+             }
+             else
+             {
+            var alien = aliens.create((game.rnd.integerInRange(6, 12)*64), -64, 'invader2');
+             }
             alien.anchor.setTo(0.5, 0.5);
             alien.animations.add('fly', [ 0, 1, 2, 3 ], 20, true);
             alien.play('fly');
             alien.body.moves = true;
             alien.body.velocity.y = game.rnd.integerInRange(100, 150);
             
-            var alien = aliens.create((game.rnd.integerInRange(0, 5)*64), -64, 'cardown');
+            if (game.rnd.integerInRange(0, 2) > 1)
+             {
+             var alien = aliens.create((game.rnd.integerInRange(0, 5)*64), -64, 'cardown'); 
+             }
+             else
+             {
+            var alien = aliens.create((game.rnd.integerInRange(0, 5)*64), -64, 'cardown2');
+             }
             alien.anchor.setTo(0.5, 0.5);
             alien.animations.add('fly', [ 0, 1, 2, 3 ], 20, true);
             alien.play('fly');
@@ -282,6 +326,16 @@ function enemyHitsPlayer (player,alien) {
     var explosion = explosions.getFirstExists(false);
     explosion.reset(player.body.x, player.body.y);
     explosion.play('kaboom', 30, false, true);
+    
+    
+    /*var debri = debris.getFirstExists(false);
+    debri.anchor.setTo(0.5, 0.5);
+    debri.reset(player.body.x, player.body.y);
+    debri.play('spin');
+    //debri.play('debroo', 30, false, true);
+    debri.body.moves = true;
+    debri.body.velocity.y = game.rnd.integerInRange(-400, 400);
+    debri.body.velocity.x = game.rnd.integerInRange(-400, 400);*/
 
     // When the player dies
     if (lives.countLiving() < 1)
