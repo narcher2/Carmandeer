@@ -327,8 +327,8 @@ function enemyHitsPlayer (player,alien) {
     explosion.reset(player.body.x, player.body.y);
     explosion.play('kaboom', 30, false, true);
     
-    /*
-    var debri = debris.getFirstExists(false);
+    
+    /*var debri = debris.getFirstExists(false);
     debri.anchor.setTo(0.5, 0.5);
     debri.reset(player.body.x, player.body.y);
     debri.play('spin');
