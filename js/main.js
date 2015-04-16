@@ -79,6 +79,7 @@ function create() {
     enemyBullets.setAll('outOfBoundsKill', true);
     enemyBullets.setAll('checkWorldBounds', true);
     
+    /*
     debris = game.add.group();
     debris.enableBody = true;
     debris.physicsBodyType = Phaser.Physics.ARCADE;
@@ -89,7 +90,7 @@ function create() {
     debris.setAll('checkWorldBounds', true);
     debris.setAll('outOfBoundsKill', true);
     //debris.animations.add('debroo');
-    debris.animations.add('spin', [ 0, 1, 2, 3, 4 ], 20, true);
+    debris.animations.add('spin', [ 0, 1, 2, 3, 4 ], 20, true); */
     
 
     //  The hero!
@@ -326,6 +327,7 @@ function enemyHitsPlayer (player,alien) {
     explosion.reset(player.body.x, player.body.y);
     explosion.play('kaboom', 30, false, true);
     
+    /*
     var debri = debris.getFirstExists(false);
     debri.anchor.setTo(0.5, 0.5);
     debri.reset(player.body.x, player.body.y);
@@ -333,7 +335,7 @@ function enemyHitsPlayer (player,alien) {
     //debri.play('debroo', 30, false, true);
     debri.body.moves = true;
     debri.body.velocity.y = game.rnd.integerInRange(-400, 400);
-    debri.body.velocity.x = game.rnd.integerInRange(-400, 400);
+    debri.body.velocity.x = game.rnd.integerInRange(-400, 400);*/
 
     // When the player dies
     if (lives.countLiving() < 1)
