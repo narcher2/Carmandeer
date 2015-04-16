@@ -79,7 +79,7 @@ function create() {
     enemyBullets.setAll('outOfBoundsKill', true);
     enemyBullets.setAll('checkWorldBounds', true);
     
-    /*
+    
     debris = game.add.group();
     debris.enableBody = true;
     debris.physicsBodyType = Phaser.Physics.ARCADE;
@@ -90,7 +90,7 @@ function create() {
     debris.setAll('checkWorldBounds', true);
     debris.setAll('outOfBoundsKill', true);
     //debris.animations.add('debroo');
-    debris.animations.add('spin', [ 0, 1, 2, 3, 4 ], 20, true); */
+    debris.animations.add('spin', [ 0, 1, 2, 3, 4 ], 20, true); 
     
 
     //  The hero!
