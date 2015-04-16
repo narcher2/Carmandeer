@@ -5,9 +5,14 @@ function preload() {
     game.load.image('bullet', 'assets/games/invaders/bullet.png');
     game.load.image('enemyBullet', 'assets/games/invaders/enemy-bullet.png');
     //game.load.spritesheet('invader', 'assets/games/invaders/car2.png', 32, 64);
-    game.load.image('invader', 'assets/games/carmandeer/car2.png');
-    game.load.image('cardown', 'assets/games/carmandeer/car3.png');
-    game.load.image('ship', 'assets/games/carmandeer/car1.png');
+    game.load.image('invader', 'assets/games/carmandeer/redcartrimup.png');
+    game.load.image('cardown', 'assets/games/carmandeer/redcartrimdown.png');
+    game.load.image('invader2', 'assets/games/carmandeer/bluecaruptrim.png');
+    game.load.image('cardown2', 'assets/games/carmandeer/bluecardowntrim.png');
+    game.load.image('invader3', 'assets/games/carmandeer/purplecarup.png');
+    game.load.image('cardown3', 'assets/games/carmandeer/purplecardown.png');
+    game.load.spritesheet('rainbowcar', 'assets/games/carmandeer/rainbowcar.png', 24, 48);
+    game.load.image('ship', 'assets/games/carmandeer/yellowcartrimup.png');
     game.load.spritesheet('kaboom', 'assets/games/invaders/explode.png', 128, 128);
     game.load.image('starfield', 'assets/games/carmandeer/road.png');
     game.load.image('background', 'assets/games/starstruck/background2.png');
