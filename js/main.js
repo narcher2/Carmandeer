@@ -19,6 +19,7 @@ function preload() {
     game.load.image('starfield', 'assets/games/carmandeer/road.png');
     game.load.image('background', 'assets/games/starstruck/background2.png');
     game.load.audio('traffic', 'assets/games/carmandeer/traffic.mp3');
+    //game.load.audio('traffic', 'assets/games/carmandeer/cityescape.mp3');
     game.load.audio('crash', 'assets/games/carmandeer/crash2.wav');
     
 
@@ -83,9 +84,12 @@ function create() {
     debris.physicsBodyType = Phaser.Physics.ARCADE;
     
     debris.createMultiple(50, 'debri');
+    debris.setAll('anchor.x', 0.5);
+    debris.setAll('anchor.y', 0.5);
     debris.setAll('checkWorldBounds', true);
     debris.setAll('outOfBoundsKill', true);
-    debris.animations.add('debroo');
+    //debris.animations.add('debroo');
+    debris.animations.add('spin', [ 0, 1, 2, 3, 4 ], 20, true);
     
 
     //  The hero!
@@ -325,7 +329,7 @@ function enemyHitsPlayer (player,alien) {
     var debri = debris.getFirstExists(false);
     debri.anchor.setTo(0.5, 0.5);
     debri.reset(player.body.x, player.body.y);
-    debri.play('debroo');
+    debri.play('spin');
     //debri.play('debroo', 30, false, true);
     debri.body.moves = true;
     debri.body.velocity.y = game.rnd.integerInRange(-400, 400);
