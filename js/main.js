@@ -12,7 +12,7 @@ function preload() {
     game.load.image('invader3', 'assets/games/carmandeer/purplecarup.png');
     game.load.image('cardown3', 'assets/games/carmandeer/purplecardown.png');
     game.load.spritesheet('rainbowcar', 'assets/games/carmandeer/rainbowcar.png', 24, 48);
-    game.load.image('ship', 'assets/games/carmandeer/yellowcartrimup.png');
+    game.load.image('ship', 'assets/games/carmandeer/yellowcartrim.png');
     game.load.spritesheet('kaboom', 'assets/games/invaders/explode.png', 128, 128);
     game.load.image('starfield', 'assets/games/carmandeer/road.png');
     game.load.image('background', 'assets/games/starstruck/background2.png');
