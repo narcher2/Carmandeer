@@ -14,6 +14,7 @@ function preload() {
     game.load.spritesheet('rainbowcar', 'assets/games/carmandeer/rainbowcar.png', 24, 48);
     game.load.image('ship', 'assets/games/carmandeer/yellowcartrim.png');
     game.load.spritesheet('kaboom', 'assets/games/invaders/explode.png', 128, 128);
+    game.load.spritesheet('debroo', 'assets/games/invaders/debris_strip5.png', 16, 16);
     game.load.image('starfield', 'assets/games/carmandeer/road.png');
     game.load.image('background', 'assets/games/starstruck/background2.png');
     game.load.audio('traffic', 'assets/games/carmandeer/traffic.mp3');
@@ -29,6 +30,7 @@ var bulletTime = 0;
 var cursors;
 var fireButton;
 var explosions;
+var debris;
 var starfield;
 var score = 0;
 var scoreString = '';
@@ -74,6 +76,16 @@ function create() {
     enemyBullets.setAll('anchor.y', 1);
     enemyBullets.setAll('outOfBoundsKill', true);
     enemyBullets.setAll('checkWorldBounds', true);
+    
+    debris = game.add.group();
+    debris.enableBody = true;
+    debris.physicsBodyType = Phaser.Physics.ARCADE;
+    
+    debris.createMultiple(50, 'debri');
+    debris.setAll('checkWorldBounds', true);
+    debris.setAll('outOfBoundsKill', true);
+    debris.animations.add('debroo');
+    
 
     //  The hero!
     player = game.add.sprite(400, 500, 'ship');
@@ -308,6 +320,15 @@ function enemyHitsPlayer (player,alien) {
     var explosion = explosions.getFirstExists(false);
     explosion.reset(player.body.x, player.body.y);
     explosion.play('kaboom', 30, false, true);
+    
+    var debri = debris.getFirstExists(false);
+    debri.anchor.setTo(0.5, 0.5);
+    debri.reset(player.body.x, player.body.y);
+    //debri.play('debroo');
+    debri.play('debroo', 30, false, true);
+    debri.body.moves = true;
+    debri.body.velocity.y = game.rnd.integerInRange(-400, 400);
+    debri.body.velocity.x = game.rnd.integerInRange(-400, 400);
 
     // When the player dies
     if (lives.countLiving() < 1)
