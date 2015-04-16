@@ -3,6 +3,7 @@ var game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-example', { preload: p
 function preload() {
 
     game.load.image('bullet', 'assets/games/invaders/bullet.png');
+    game.load.image('debri', 'assets/games/invaders/debrissingle.png');
     game.load.image('enemyBullet', 'assets/games/invaders/enemy-bullet.png');
     //game.load.spritesheet('invader', 'assets/games/invaders/car2.png', 32, 64);
     game.load.image('invader', 'assets/games/carmandeer/redcartrimup.png');
@@ -324,8 +325,8 @@ function enemyHitsPlayer (player,alien) {
     var debri = debris.getFirstExists(false);
     debri.anchor.setTo(0.5, 0.5);
     debri.reset(player.body.x, player.body.y);
-    //debri.play('debroo');
-    debri.play('debroo', 30, false, true);
+    debri.play('debroo');
+    //debri.play('debroo', 30, false, true);
     debri.body.moves = true;
     debri.body.velocity.y = game.rnd.integerInRange(-400, 400);
     debri.body.velocity.x = game.rnd.integerInRange(-400, 400);
